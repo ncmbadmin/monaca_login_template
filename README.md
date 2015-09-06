@@ -1,4 +1,4 @@
-# Monaca x NIFTYCLOUD mobile backend 会員ログインサンプル
+、# Monaca x NIFTYCLOUD mobile backend 会員ログインサンプル
 
 ===
 
@@ -6,22 +6,33 @@
 
 こちらはMonacaを利用して、mbaasサーバーにログイン機能をつけるサンプルです。
 * Android, iOSアプリをHTML, JavaScriptで簡単に作れるツール[Monaca](https://ja.monaca.io/)
-* アプリのサーバー機能を簡単に作れるツール[Nifty cloud mobile backend](http://mb.cloud.nifty.com/)
+* アプリのサーバー機能を簡単に作れるツール[Nifty cloud mobile backend](http://mb.cloud.nifty.com/) (以下からmBaaS)
 
 ![overview](readme-img/overview.JPG "概要図")
 
 ## Demo
 
-MonacaでgithubのURLをインポートし、
-アプリキーとクライントキーを設定し、StartDemoボタンをおすと
-mobile backend画面では{"message":"Hello, NCMB!"}データーが登録されることを確認します。
+MonacaでgithubのURL(Download zip file)をインポートし、
+アプリキーとクライントキーを設定し、アプリを起動（プレビュー）します。
+最初にログイン画面が出て、「登録」ボタンを押し、登録画面に行きます。
+登録画面にて、「ユーザー名」＋「パスワード」を入力し、ユーザー登録を行います。
+ログイン画面に戻り、登録した「ユーザー名」＋「パスワードの組み合わせで」
+ログインができることを確認します。
+※mBaaS管理画面にて、ユーザー登録されていることを確認できます。
+し、
+* ユーザー新規登録画面
 
-![demo1](readme-img/demo1.JPG "起動画面")
-![demo2](readme-img/demo2.JPG "登録完了")
+![demo2](readme-img/demo3.JPG "登録完了")
+
+* ログイン画面
+
+![demo1](readme-img/demo2.JPG "起動画面")
 
 ## Description
 
 * コードの説明
+
+File: www/js/app.js
 
 ** 初期化設定
 ```JavaScript
@@ -39,19 +50,18 @@ $(function() {
 ```
 
 上記のコードでキーを指定し、NCMB.initialize(appKey, clientKey), mBaaSサーバーと連携を行います。
-"TestClass"という名前を設定しデータークラスを指定します。testClassオブジェクトを利用して、データーを操作します。
-```
-        var key   = "message";
-        var value = "Hello, NCMB!";
-        testClass.set(key, value);
-```
-testClassのデーターを指定し、key, valueを設定した上、save()を実行すると、非同期データーが保存されます。
-success, errorではそれぞれ保存を行った時のcallbackを定義してあります。
 
-** ユーザー登録
+** ユーザ登録
 
-```JavaScript
-//起動時にmobile backend APIキーを設定
+NCMB.Userクラスを利用し、ユーザ登録を行います。
+最初にuserという変数をNCMB.Userクラスのインスタンスとして作成、set("key", "value")
+というメソッドを利用し、username, passwordをセットします。
+会員の他の属性も同様にセットできます。
+セット後、signUp()メソッドを利用し、ユーザ登録を非同期に行います。
+success, errorそれぞれ場合のコールバック処理を定義してあります。
+successの場合、alertを出し、currentLoginUserをセットし、#DetailPageに移動させます。
+
+//入力フォームからusername, password変数にセット
 var username = $("#reg_username").val();
 var password = $("#reg_password").val();
 
@@ -74,6 +84,11 @@ user.signUp(null, {
 
 *** ユーザーログイン
 
+NCMB.Userクラスを利用し、ユーザログインを行います。
+NCMB.UserのlogInメソッドを利用し、username, passwordを渡し、
+非同期にログインを行います。error, successの場合それぞれコールバックを定義します。
+ログイン成功した場合、alertを出し、currentLoginUserをセットし、#DetailPageに移動します。
+
 ```JavaScript
 var username = $("#login_username").val();
 var password = $("#login_password").val();
@@ -91,6 +106,10 @@ NCMB.User.logIn(username, password, {
 ```
 
 *** ユーザーログアウト
+
+NCMB.Userクラスを利用し、ユーザログアウトを行います。
+NCMB.UserのlogOutメソッドを利用し、username, ログアウトを行います。
+ログアウトの後、currentLoginUserをリセットし、#LoginPageに移動します。
 
 ```JavaScript
 NCMB.User.logOut();
@@ -127,6 +146,7 @@ $.mobile.changePage('#LoginPage');
 * monacaで作成したアプリをmobile backendサーバーと連携させる
   - monacaでアプリキー、クライアントキーを設定し、初期化を行う
 ![initialize2](readme-img/appKeyClientKey.JPG "初期化")
+キーをコピーし、追記します。
 ![initialize](readme-img/appKeyClientKey_setting.JPG "初期化")
   - monacaで動作確認する
 ![demo](readme-img/demo2.JPG "動作確認")
