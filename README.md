@@ -129,26 +129,34 @@ $.mobile.changePage('#LoginPage');
 * Monacaで新規アプリ作成し、プロジェクトをインポートする。
   - monacaの利用登録する
     [Monaca](https://ja.monaca.io/)
+
 ![monaca](readme-img/monaca.JPG "新規プロジェクト")
   - monacaで新規プロジェクトを作成する
+
 ![create](readme-img/monaca_new_project.JPG "新規プロジェクト")
+
 ![create](readme-img/monaca_new_project_2.JPG "新規プロジェクト")
 
 * mobile backendでアプリ作成する
   - mobile backendで利用登録する
     [Nifty cloud mobile backend](http://mb.cloud.nifty.com/)
+
 ![register](readme-img/register.JPG "登録画面")
   - mobile backendでアプリ作成する: プロジェクトインポートを選択し、URLからインポートする。
  URLがhttps://github.com/ncmbadmin/monaca_login_template/archive/master.zip
  で選択する。
+
 ![newapp](readme-img/newapp.JPG "新規アプリ作成")
 
 * monacaで作成したアプリをmobile backendサーバーと連携させる
   - monacaでアプリキー、クライアントキーを設定し、初期化を行う
+
 ![initialize2](readme-img/appKeyClientKey.JPG "初期化")
 キーをコピーし、追記します。
+
 ![initialize](readme-img/appKeyClientKey_setting.JPG "初期化")
   - monacaで動作確認する
+
 ![demo](readme-img/demo2.JPG "動作確認")
 
 ## Usage
