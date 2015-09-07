@@ -89,7 +89,7 @@ user.signUp(null, {
 });
 ```
 
-　-  ユーザーログイン
+ - ユーザーログイン
 
 NCMB.Userクラスを利用し、ユーザログインを行います。
 NCMB.UserのlogInメソッドを利用し、username, passwordを渡し、
