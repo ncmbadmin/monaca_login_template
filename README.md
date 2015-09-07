@@ -37,7 +37,8 @@ MonacaでgithubのURL(Download zip file)をインポートし、
 
 File: www/js/app.js
 
-** 初期化設定
+ - 初期化設定
+
 ```JavaScript
 var appKey    = "YOUR_APPKEY";
 var clientKey = "YOUR_CLIENTKEY";
@@ -54,16 +55,19 @@ $(function() {
 
 上記のコードでキーを指定し、NCMB.initialize(appKey, clientKey), mBaaSサーバーと連携を行います。
 
-** ユーザ登録
+ - ユーザ登録
 
 NCMB.Userクラスを利用し、ユーザ登録を行います。
+
 最初にuserという変数をNCMB.Userクラスのインスタンスとして作成、set("key", "value")
 というメソッドを利用し、username, passwordをセットします。
 会員の他の属性も同様にセットできます。
+
 セット後、signUp()メソッドを利用し、ユーザ登録を非同期に行います。
 success, errorそれぞれ場合のコールバック処理を定義してあります。
 successの場合、alertを出し、currentLoginUserをセットし、#DetailPageに移動させます。
 
+```JavaScript
 //入力フォームからusername, password変数にセット
 var username = $("#reg_username").val();
 var password = $("#reg_password").val();
@@ -85,7 +89,7 @@ user.signUp(null, {
 });
 ```
 
-*** ユーザーログイン
+　-  ユーザーログイン
 
 NCMB.Userクラスを利用し、ユーザログインを行います。
 NCMB.UserのlogInメソッドを利用し、username, passwordを渡し、
@@ -108,7 +112,7 @@ NCMB.User.logIn(username, password, {
 });
 ```
 
-*** ユーザーログアウト
+ - ユーザーログアウト
 
 NCMB.Userクラスを利用し、ユーザログアウトを行います。
 NCMB.UserのlogOutメソッドを利用し、username, ログアウトを行います。
