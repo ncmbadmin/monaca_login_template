@@ -31,6 +31,44 @@ MonacaでgithubのURL（https://github.com/ncmbadmin/monaca_login_template/archi
 
 ![demo2](readme-img/demo3.JPG "登録完了")
 
+
+
+## Requirement
+
+* Monaca環境
+* Nifty cloud mobile backend Javascript SDK version 1.2.6　ダウンロード：[Javascript SDK](http://mb.cloud.nifty.com/doc/1.2.6/introduction/sdkdownload_javascript.html?utm_source=community&utm_medium=referral&utm_campaign=sample_monaca_data_registration)
+* ※version 2.0.0はまだ準備中です。
+
+
+## Installation
+
+* Monacaで新規アプリ作成し、プロジェクトをインポートする。
+  - Monacaの利用登録
+    [Monaca](https://ja.monaca.io/)
+![Monaca](readme-img/monaca.JPG "新規プロジェクト")
+  - Monacaで新規プロジェクトを作成し、プロジェクトのインポートを選択します。
+![create](readme-img/monaca_new_project.JPG "新規プロジェクト")
+  - 「URLからインポートする」を選択し、URLに https://github.com/ncmbadmin/sample_monaca_login_template/archive/master.zip を指定します。
+![create](readme-img/monaca_new_project_2.JPG "新規プロジェクト")
+
+* mobile backendでアプリ作成する
+  - mobile backend 利用登録
+    [NIFTY Cloud mobile backend](http://mb.cloud.nifty.com/?utm_source=community&utm_medium=referral&utm_campaign=sample_monaca_login_template)
+![register](readme-img/register.JPG "登録画面")
+  - mobile backendでアプリ作成する
+![newapp](readme-img/newapp.JPG "新規アプリ作成")
+
+* Monacaで作成したアプリをmobile backendサーバーと連携させる
+  - Monacaでアプリケーションキー、クライアントキーを設定し、初期化を行う
+
+![initialize2](readme-img/appKeyClientKey.JPG "初期化")
+キーをコピーし、追記します。
+
+![initialize](readme-img/appKeyClientKey_setting.JPG "初期化")
+  - monacaで動作確認する
+
+![demo](readme-img/demo2.JPG "動作確認")
+
 ## Description
 
 * コードの説明
@@ -124,40 +162,6 @@ alert('ログアウト成功');
 currentLoginUser = null;
 $.mobile.changePage('#LoginPage');
 ```
-
-## Requirement
-
-* Monaca環境
-* NIFTY Cloud mobile backend Javascript SDK version 1.2.6　ダウンロード：[Javascript SDK](http://mb.cloud.nifty.com/doc/current/introduction/sdkdownload_javascript.html?utm_source=community&utm_medium=referral&utm_campaign=sample_monaca_login_template)
-
-## Installation
-
-* Monacaで新規アプリ作成し、プロジェクトをインポートする。
-  - Monacaの利用登録
-    [Monaca](https://ja.monaca.io/)
-![Monaca](readme-img/monaca.JPG "新規プロジェクト")
-  - Monacaで新規プロジェクトを作成し、プロジェクトのインポートを選択します。
-![create](readme-img/monaca_new_project.JPG "新規プロジェクト")
-  - 「URLからインポートする」を選択し、URLに https://github.com/ncmbadmin/sample_monaca_login_template/archive/master.zip を指定します。
-![create](readme-img/monaca_new_project_2.JPG "新規プロジェクト")
-
-* mobile backendでアプリ作成する
-  - mobile backend 利用登録
-    [NIFTY Cloud mobile backend](http://mb.cloud.nifty.com/?utm_source=community&utm_medium=referral&utm_campaign=sample_monaca_login_template)
-![register](readme-img/register.JPG "登録画面")
-  - mobile backendでアプリ作成する
-![newapp](readme-img/newapp.JPG "新規アプリ作成")
-
-* Monacaで作成したアプリをmobile backendサーバーと連携させる
-  - Monacaでアプリケーションキー、クライアントキーを設定し、初期化を行う
-
-![initialize2](readme-img/appKeyClientKey.JPG "初期化")
-キーをコピーし、追記します。
-
-![initialize](readme-img/appKeyClientKey_setting.JPG "初期化")
-  - monacaで動作確認する
-
-![demo](readme-img/demo2.JPG "動作確認")
 
 ## Usage
 
