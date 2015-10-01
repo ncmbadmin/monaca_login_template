@@ -1,35 +1,35 @@
-、# Monaca x NIFTYCLOUD mobile backend 会員ログインサンプル
+﻿# Monaca x NIFTY Cloud mobile backend 会員ログインサンプル
 
 ===
 
 # Overview
 
-こちらはMonacaを利用して、mbaasサーバーにログイン機能をつけるサンプルです。
-* Android, iOSアプリをHTML, JavaScriptで簡単に作れるツール[Monaca](https://ja.monaca.io/)
-* アプリのサーバー機能を簡単に作れるツール[Nifty cloud mobile backend](http://mb.cloud.nifty.com/) (以下からmBaaS)
+Monacaを用いて作ったアプリとmobile backendを連携して、ログイン機能を実装するサンプルコードとなります。
+* HTML/CSS/JavaScriptでマルチプラットフォーム（iOS/Android/Windowsなど）にアプリを開発できる統合開発環境[Monaca](https://ja.monaca.io/)
+* スマホアプリのサーバ側機能（プッシュ通知、会員管理、DBなど）をサーバ開発不要で実装できる[NIFTY Cloud mobile backend](http://mb.cloud.nifty.com/?utm_source=community&utm_medium=referral&utm_campaign=sample_monaca_login_template)
 
 ![overview](readme-img/overview.JPG "概要図")
 
 ## Demo
 
-MonacaでgithubのURL(Download zip file)をインポートし、
-アプリキーとクライントキーを設定し、アプリを起動（プレビュー）します。
+MonacaでgithubのURL（https://github.com/ncmbadmin/monaca_login_template/archive/master.zip）をインポートし、
+アプリケーションキーとクライントキーを設定してください。
 
-最初にログイン画面が出て、「登録」ボタンを押し、登録画面に行きます。
+最初にログイン画面がでますので、「登録」ボタンを押し、登録画面へ遷移します。
 登録画面にて、「ユーザー名」＋「パスワード」を入力し、ユーザー登録を行います。
 
-ログイン画面に戻り、登録した「ユーザー名」＋「パスワードの組み合わせで」
+その後、ログイン画面に戻り、登録した「ユーザー名」＋「パスワードの組み合わせで」
 ログインができることを確認します。
 
-※mBaaS管理画面にて、ユーザー登録されていることを確認できます。
-
-* ユーザー新規登録画面
-
-![demo2](readme-img/demo3.JPG "登録完了")
+※mBaaS管理画面の「会員管理」タブにて、ユーザー登録が完了したことを確認できます。
 
 * ログイン画面
 
 ![demo1](readme-img/demo2.JPG "起動画面")
+
+* ユーザー新規登録画面
+
+![demo2](readme-img/demo3.JPG "登録完了")
 
 ## Description
 
@@ -52,20 +52,20 @@ $(function() {
   NCMB.initialize(appKey, clientKey);
 });
 ```
-
-上記のコードでキーを指定し、NCMB.initialize(appKey, clientKey), mBaaSサーバーと連携を行います。
+上記のコードでアプリケーションキーとクライアントキーを指定し、
+NCMB.initialize(appKey, clientKey)　でmBaaSサーバと連携を行います。
 
  - ユーザ登録
 
-NCMB.Userクラスを利用し、ユーザ登録を行います。
+NCMB.Userクラスを利用して、ユーザ登録を行います。
 
-最初にuserという変数をNCMB.Userクラスのインスタンスとして作成、set("key", "value")
-というメソッドを利用し、username, passwordをセットします。
-会員の他の属性も同様にセットできます。
+最初にuserという変数をNCMB.Userクラスのインスタンスとして作成します。
+userに対し、set("key", "value")というメソッドを利用して、username, passwordをセットします。
+他の属性（たとえば年齢や性別など）も、同様の形でセットできます。
 
-セット後、signUp()メソッドを利用し、ユーザ登録を非同期に行います。
-success, errorそれぞれ場合のコールバック処理を定義してあります。
-successの場合、alertを出し、currentLoginUserをセットし、#DetailPageに移動させます。
+セット後、signUp()メソッドを利用し、ユーザ登録を非同期にて行います。
+success, error それぞれの場合のコールバック処理を定義します。
+successの場合、alertを出し、currentLoginUserをセットしてから、#DetailPageに遷移させます。
 
 ```JavaScript
 //入力フォームからusername, password変数にセット
@@ -92,9 +92,9 @@ user.signUp(null, {
  - ユーザーログイン
 
 NCMB.Userクラスを利用し、ユーザログインを行います。
-NCMB.UserのlogInメソッドを利用し、username, passwordを渡し、
-非同期にログインを行います。error, successの場合それぞれコールバックを定義します。
-ログイン成功した場合、alertを出し、currentLoginUserをセットし、#DetailPageに移動します。
+NCMB.UserのlogInメソッドを利用し、username, passwordを渡し、非同期にてログインを行います。
+success, error それぞれの場合のコールバックを定義します。
+ログイン成功した場合、alertを出し、currentLoginUserをセットしてから、#DetailPageに遷移します。
 
 ```JavaScript
 var username = $("#login_username").val();
@@ -115,8 +115,8 @@ NCMB.User.logIn(username, password, {
  - ユーザーログアウト
 
 NCMB.Userクラスを利用し、ユーザログアウトを行います。
-NCMB.UserのlogOutメソッドを利用し、username, ログアウトを行います。
-ログアウトの後、currentLoginUserをリセットし、#LoginPageに移動します。
+NCMB.UserのlogOutメソッドを利用し、ログアウトを行います。
+ログアウトの後、currentLoginUserをリセットし、#LoginPageに遷移します。
 
 ```JavaScript
 NCMB.User.logOut();
@@ -128,35 +128,28 @@ $.mobile.changePage('#LoginPage');
 ## Requirement
 
 * Monaca環境
-* Nifty cloud mobile backend Javascript SDK version 1.2.6
-ダウンロード：[Javascript SDK](http://mb.cloud.nifty.com/doc/current/introduction/sdkdownload_javascript.html)
+* NIFTY Cloud mobile backend Javascript SDK version 1.2.6　ダウンロード：[Javascript SDK](http://mb.cloud.nifty.com/doc/current/introduction/sdkdownload_javascript.html?utm_source=community&utm_medium=referral&utm_campaign=sample_monaca_login_template)
 
 ## Installation
 
 * Monacaで新規アプリ作成し、プロジェクトをインポートする。
-  - monacaの利用登録する
+  - Monacaの利用登録
     [Monaca](https://ja.monaca.io/)
-
-![monaca](readme-img/monaca.JPG "新規プロジェクト")
-  - monacaで新規プロジェクトを作成する
-
+![Monaca](readme-img/monaca.JPG "新規プロジェクト")
+  - Monacaで新規プロジェクトを作成し、プロジェクトのインポートを選択します。
 ![create](readme-img/monaca_new_project.JPG "新規プロジェクト")
-
+  - 「URLからインポートする」を選択し、URLに https://github.com/ncmbadmin/sample_monaca_login_template/archive/master.zip を指定します。
 ![create](readme-img/monaca_new_project_2.JPG "新規プロジェクト")
 
 * mobile backendでアプリ作成する
-  - mobile backendで利用登録する
-    [Nifty cloud mobile backend](http://mb.cloud.nifty.com/)
-
+  - mobile backend 利用登録
+    [NIFTY Cloud mobile backend](http://mb.cloud.nifty.com/?utm_source=community&utm_medium=referral&utm_campaign=sample_monaca_login_template)
 ![register](readme-img/register.JPG "登録画面")
-  - mobile backendでアプリ作成する: プロジェクトインポートを選択し、URLからインポートする。
- URLがhttps://github.com/ncmbadmin/monaca_login_template/archive/master.zip
- で選択する。
-
+  - mobile backendでアプリ作成する
 ![newapp](readme-img/newapp.JPG "新規アプリ作成")
 
-* monacaで作成したアプリをmobile backendサーバーと連携させる
-  - monacaでアプリキー、クライアントキーを設定し、初期化を行う
+* Monacaで作成したアプリをmobile backendサーバーと連携させる
+  - Monacaでアプリケーションキー、クライアントキーを設定し、初期化を行う
 
 ![initialize2](readme-img/appKeyClientKey.JPG "初期化")
 キーをコピーし、追記します。
@@ -168,13 +161,14 @@ $.mobile.changePage('#LoginPage');
 
 ## Usage
 
-サンプルコードをカスタマイズする、key, value変数を変更していただきます。
-以下のドキュメントを参照し、データ保存・検索・プッシュ通知を入れることができる。
-* [ドキュメント](http://mb.cloud.nifty.com/doc/current/)
-* [ドキュメント・データストア](http://mb.cloud.nifty.com/doc/current/sdkguide/javascript/datastore.html)
-* [ドキュメント・会員管理](http://mb.cloud.nifty.com/doc/current/sdkguide/javascript/user.html)
-* [ドキュメント・プッシュ通知](http://mb.cloud.nifty.com/doc/current/sdkguide/javascript/push.html)
+サンプルコードをカスタマイズすることで、様々な機能を実装できます！
+データ保存・データ検索・会員管理・プッシュ通知などの機能を実装したい場合には、
+以下のドキュメントもご参考ください。
 
+* [ドキュメント](http://mb.cloud.nifty.com/doc/current/?utm_source=community&utm_medium=referral&utm_campaign=sample_monaca_login_template)
+* [ドキュメント・データストア](http://mb.cloud.nifty.com/doc/current/sdkguide/javascript/datastore.html?utm_source=community&utm_medium=referral&utm_campaign=sample_monaca_login_template)
+* [ドキュメント・会員管理](http://mb.cloud.nifty.com/doc/current/sdkguide/javascript/user.html?utm_source=community&utm_medium=referral&utm_campaign=sample_monaca_login_template)
+* [ドキュメント・プッシュ通知](http://mb.cloud.nifty.com/doc/current/sdkguide/javascript/push.html?utm_source=community&utm_medium=referral&utm_campaign=sample_monaca_login_template)
 
 ## Contributing
 
@@ -187,4 +181,4 @@ $.mobile.changePage('#LoginPage');
 ## License
 
 * MITライセンス
-* Nifty cloud mobile backendのJavascript SDKのライセンス
+* NIFTY Cloud mobile backendのJavascript SDKのライセンス
