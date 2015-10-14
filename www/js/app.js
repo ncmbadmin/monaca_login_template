@@ -14,7 +14,7 @@ var currentLoginUser; //現在ログイン中ユーザー
 
 function onRegisterBtn()
 {
-    //起動時にmobile backend APIキーを設定
+    //入力フォームからusername, password変数にセット
     var username = $("#reg_username").val();
     var password = $("#reg_password").val();
     
