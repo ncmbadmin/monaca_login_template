@@ -26,11 +26,11 @@ function onRegisterBtn()
     user.signUpByAccount()
         .then(function(user) {
             alert("新規登録に成功");
-            currentLoginUser = NCMB.User.current();
+            currentLoginUser = ncmb.User.getCurrentUser();
             $.mobile.changePage('#DetailPage');
         })
         .catch(function(error) {
-            alert("新規登録に失敗！次のエラー発生：" + error.text);
+            alert("新規登録に失敗！次のエラー発生：" + error);
         });
 }
 
@@ -39,20 +39,20 @@ function onLoginBtn()
     var username = $("#login_username").val();
     var password = $("#login_password").val();
     // ユーザー名とパスワードでログイン
-    ncmb.User.logIn(username, password)
+    ncmb.User.login(username, password)
         .then(function(user) {
             alert("ログイン成功");
-            currentLoginUser = NCMB.User.current();
+            currentLoginUser = ncmb.User.getCurrentUser();
             $.mobile.changePage('#DetailPage');
         })
-        .catch(function(user, error) {
-            alert("ログイン失敗！次のエラー発生: " + error.text);
+        .catch(function(error) {
+            alert("ログイン失敗！次のエラー発生: " + error);
         });
 }
 
 function onLogoutBtn()
 {
-    ncmb.User.logOut();
+    ncmb.User.logout();
     alert('ログアウト成功');
     currentLoginUser = null;
     $.mobile.changePage('#LoginPage');
