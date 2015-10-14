@@ -80,18 +80,11 @@ File: www/js/app.js
 ```JavaScript
 var appKey    = "YOUR_APPKEY";
 var clientKey = "YOUR_CLIENTKEY";
-
-///// Called when app launch
-$(function() {
-  //ボタン処理実装
-  $("#LoginBtn").click(onLoginBtn);
-  $("#RegisterBtn").click(onRegisterBtn);
-  $("#YesBtn_logout").click(onLogoutBtn);  
-  NCMB.initialize(appKey, clientKey);
-});
+var ncmb = new NCMB(appKey, clientKey);
 ```
+
 上記のコードでアプリケーションキーとクライアントキーを指定し、
-NCMB.initialize(appKey, clientKey)　でmBaaSサーバと連携を行います。
+NCMB(appKey, clientKey)　でmBaaSサーバと連携を行います。
 
  - ユーザ登録
 
@@ -101,37 +94,36 @@ NCMB.Userクラスを利用して、ユーザ登録を行います。
 userに対し、set("key", "value")というメソッドを利用して、username, passwordをセットします。
 他の属性（たとえば年齢や性別など）も、同様の形でセットできます。
 
-セット後、signUp()メソッドを利用し、ユーザ登録を非同期にて行います。
-success, error それぞれの場合のコールバック処理を定義します。
-successの場合、alertを出し、currentLoginUserをセットしてから、#DetailPageに遷移させます。
+セット後、signUpByAccount()メソッドを利用し、ユーザ登録を非同期にて行います。
+メソッドチェインを行い、then(), catch() それぞれの場合の処理を定義します。
+成功の場合、alertを出し、currentLoginUserをセットしてから、#DetailPageに遷移させます。
 
 ```JavaScript
 //入力フォームからusername, password変数にセット
 var username = $("#reg_username").val();
 var password = $("#reg_password").val();
 
-var user = new NCMB.User();
-user.set("userName", username);
-user.set("password", password);
+var user = new ncmb.User();
+user.set("userName", username)
+    .set("password", password);
 
-// 任意フィールドに値を追加
-user.signUp(null, {
-    success: function(user) {
+// 任意フィールドに値を追加 
+user.signUpByAccount()
+    .then(function(user) {
         alert("新規登録に成功");
-        currentLoginUser = NCMB.User.current();
+        currentLoginUser = ncmb.User.getCurrentUser();
         $.mobile.changePage('#DetailPage');
-    },
-    error: function(user, error) {
-        alert("新規登録に失敗！次のエラー発生： " + error.message);
-    }
-});
+    })
+    .catch(function(error) {
+        alert("新規登録に失敗！次のエラー発生：" + error);
+    });
 ```
 
  - ユーザーログイン
 
-NCMB.Userクラスを利用し、ユーザログインを行います。
-NCMB.UserのlogInメソッドを利用し、username, passwordを渡し、非同期にてログインを行います。
-success, error それぞれの場合のコールバックを定義します。
+ncmb.Userクラスを利用し、ユーザログインを行います。
+ncmb.Userのloginメソッドを利用し、username, passwordを渡し、非同期にてログインを行います。
+メソッドチェインを行い、then(), catch() それぞれの場合の処理を定義します。
 ログイン成功した場合、alertを出し、currentLoginUserをセットしてから、#DetailPageに遷移します。
 
 ```JavaScript
