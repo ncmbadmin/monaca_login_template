@@ -107,7 +107,7 @@ var user = new ncmb.User();
 user.set("userName", username)
     .set("password", password);
 
-// 任意フィールドに値を追加 
+// 任意フィールドに値を追加
 user.signUpByAccount()
     .then(function(user) {
         alert("新規登録に成功");
@@ -130,26 +130,25 @@ ncmb.Userのloginメソッドを利用し、username, passwordを渡し、非同
 var username = $("#login_username").val();
 var password = $("#login_password").val();
 // ユーザー名とパスワードでログイン
-NCMB.User.logIn(username, password, {
-    success: function(user) {
+ncmb.User.login(username, password)
+    .then(function(user) {
         alert("ログイン成功");
-        currentLoginUser = NCMB.User.current();
+        currentLoginUser = ncmb.User.getCurrentUser();
         $.mobile.changePage('#DetailPage');
-    },
-    error: function(user, error) {
-        alert("ログイン失敗！次のエラー発生: " + error.message);
-    }
-});
+    })
+    .catch(function(error) {
+        alert("ログイン失敗！次のエラー発生: " + error);
+    });
 ```
 
  - ユーザーログアウト
 
-NCMB.Userクラスを利用し、ユーザログアウトを行います。
-NCMB.UserのlogOutメソッドを利用し、ログアウトを行います。
+ncmb.Userクラスを利用し、ユーザログアウトを行います。
+ncmb.Userのlogoutメソッドを利用し、ログアウトを行います。
 ログアウトの後、currentLoginUserをリセットし、#LoginPageに遷移します。
 
 ```JavaScript
-NCMB.User.logOut();
+ncmb.User.logout();
 alert('ログアウト成功');
 currentLoginUser = null;
 $.mobile.changePage('#LoginPage');
