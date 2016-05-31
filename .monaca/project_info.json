@@ -8,11 +8,17 @@
     "xcode_version": "6",
     "cordova_version": "4.1",
     "plugin_settings": [],
-    "title-ja": "",
+    "external_plugins": [],
+    "title-ja": "MasterApp",
     "title-en": "",
-    "description-ja": "",
+    "description-ja": "MasterApp",
     "description-en": "",
     "category": "User Template",
-    "platform": [],
-    "name": "generated-1439171609-55bed19a7e2193ac05f2c204"
+    "platform": [
+        "android",
+        "ios",
+        "winrt",
+        "chrome"
+    ],
+    "name": "generated-1464677962-574d2d7a7e2193971b018fe1"
 }
