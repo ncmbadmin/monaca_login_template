@@ -36,8 +36,6 @@ MonacaでgithubのURL（https://github.com/ncmbadmin/monaca_login_template/archi
 ## Requirement
 
 * Monaca環境
-* Nifty cloud mobile backend Javascript SDK version 1.2.6　ダウンロード：[Javascript SDK](http://mb.cloud.nifty.com/doc/1.2.6/introduction/sdkdownload_javascript.html?utm_source=community&utm_medium=referral&utm_campaign=sample_monaca_data_registration)
-* ※version 2.0.0はまだ準備中です。
 
 
 ## Installation
