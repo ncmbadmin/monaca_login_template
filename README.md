@@ -12,7 +12,7 @@ Monacaを用いて作ったアプリとmobile backendを連携して、ログイ
 
 ## Demo
 
-MonacaでgithubのURL（https://github.com/ncmbadmin/monaca_login_template/archive/master.zip）をインポートし、
+MonacaでgithubのURL（　https://github.com/ncmbadmin/monaca_login_template/archive/master.zip　）をインポートし、
 アプリケーションキーとクライントキーを設定してください。
 
 最初にログイン画面がでますので、「登録」ボタンを押し、登録画面へ遷移します。
@@ -52,7 +52,7 @@ MonacaでgithubのURL（https://github.com/ncmbadmin/monaca_login_template/archi
 ![Monaca](readme-img/monaca.JPG "新規プロジェクト")
   - Monacaでプロジェクトのインポートを選択し、新規プロジェクトを作成します。
 ![create](readme-img/monaca_new_project.JPG "新規プロジェクト")
-  - 「URLからインポートする」を選択し、URLに https://github.com/ncmbadmin/sample_monaca_login_template/archive/master.zip を指定します。
+  - 「URLからインポートする」を選択し、URLに https://github.com/ncmbadmin/monaca_login_template/archive/master.zip を指定します。
 ![create](readme-img/monaca_new_project_2.JPG "新規プロジェクト")
 
 * mobile backendでアプリ作成する
