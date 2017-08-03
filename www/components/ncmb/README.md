@@ -4,6 +4,14 @@ JavaScript SDK for NiftyCloud mobile backend
 [![Coverage Status](https://coveralls.io/repos/NIFTYCloud-mbaas/ncmb_js/badge.svg?branch=apply_coveralls&service=github)](https://coveralls.io/github/NIFTYCloud-mbaas/ncmb_js?branch=apply_coveralls)
 [![Code Climate](https://codeclimate.com/github/NIFTYCloud-mbaas/ncmb_js/badges/gpa.svg)](https://codeclimate.com/github/NIFTYCloud-mbaas/ncmb_js)
 
+## Supported environment
+
+| Environment              | Supported version |
+|:---                  |:---        |
+| Node.js              | 0.12.x, 4.2.x |
+| Mozilla Firefox      | Latest version     |
+| Google Chrome        | Latest version     |
+
 ## Install
 
 ```shell
@@ -248,7 +256,7 @@ $ browserify -r -p licensify -t [ uglifyify -x .js ] -o ncmb.min.js lib/ncmb.js
 ## For Developer
 
 ```shell
-$ git clone XXX
+$ git clone https://github.com/NIFTYCloud-mbaas/ncmb_js
 $ cd ncmb_js
 $ npm install
 $ npm test
@@ -256,6 +264,46 @@ $ npm test
 
 npm test is not working on default Windows OS environment.
 If you want to do that, please setup nohup command.
+
+## Automated Test On Frontend
+1. Generate test files
+```shell
+$ npm run build                 # if library is updated, frontend test need to update ncmb.min.js
+$ npm run test:frontend:modules # run only once at the first time
+$ npm run test:frontend:prepare # generate test files at test/frontend/www
+```
+2. Make app on mBaaS
+3. Change anonymous user flag from disable to enable in application setting page
+4. Files exists as below after npm commands
+5. Set Appkey and Secretkey in config.js
+6. Run index.html on browser
+7. Run application in Monaca (Upload files as below)
+
+#### Directory Structure On Browser
+```
+(Any directory)/
+ ├ index.html
+ ├ ncmb.min.js
+ ├ ncmb.test.full.js
+ ├ config.js
+ └css/
+   └mocha.css
+```
+
+#### Directory Structure On Monaca
+```
+www/
+ ├ index.html //overwrite
+ ├ ncmb.min.js
+ ├ ncmb.test.full.js
+ ├ config.js
+ └css/
+   └mocha.css
+```
+
+## Create SDK Document
+
+Run `npm run document:generate` command, then documents has created in `jsdoc` directory.
 
 ## License
 
