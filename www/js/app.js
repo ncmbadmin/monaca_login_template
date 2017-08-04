@@ -5,9 +5,10 @@ var ncmb = new NCMB(appKey, clientKey);
 
 ///// Called when app launch
 $(function() {
-  $("#LoginBtn").click(onLoginBtn);
-  $("#RegisterBtn").click(onRegisterBtn);
-  $("#YesBtn_logout").click(onLogoutBtn);
+    $.mobile.defaultPageTransition = 'none';
+    $("#LoginBtn").click(onLoginBtn);
+    $("#RegisterBtn").click(onRegisterBtn);
+    $("#YesBtn_logout").click(onLogoutBtn);
 });
 
 //----------------------------------USER MANAGEMENT-------------------------------------//
